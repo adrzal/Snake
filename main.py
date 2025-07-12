@@ -6,12 +6,8 @@
 # TODO: 'Player' class: EQ, stats, spells, abilities, inspiration points, gold, alignment, [**dice modifiers]
 # TODO: Save file system > write / read
 # TODO: Console for input/output for now > logger
+# TODO: save file structure draft [player objects]
+from utils.Save import Save
 
-
-def save():
-    pass
-
-def add_mob():
-    pass
-
-add_mob()
+autor = Save()
+autor.write()
