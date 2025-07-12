@@ -14,5 +14,14 @@ from core.Mob import Mob
 from utils.Save import Save
 
 player = Mob("Eryk", 2, 3, 4, 5, 6, 30)
+goblin = Mob("Boblin", 2, 3, 4, 5, 6, 30)
 
-print(Save.enter(player))
+#Save.read("C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\utils\\Mob_list.json")
+
+Save.mobs(Mob.Mobs_collection) # save to file
+
+
+print(f"coby: {len(Mob.Mobs_collection)}")
+for x in Mob.Mobs_collection:
+    print(f"spin: {x}")
+    #Save.write(x)

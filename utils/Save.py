@@ -17,6 +17,12 @@ class Save:
             'Player4': []
         }
 
+    @staticmethod
+    def mobs(list):
+        for x in list:
+            with open(f"{MOBS_FILE_DIR}", 'w', encoding='utf-8') as f:
+                json.dump(list, f, ensure_ascii=False, indent=4)
+
 
     @staticmethod
     def get_mob_save_dir():
@@ -28,8 +34,10 @@ class Save:
 
 
     @staticmethod
-    def read():
-        pass
+    def read(path):
+        with open(path, 'r') as file:
+            data = json.load(file)
+        print(data)
 
     @staticmethod
     def gen_name():
