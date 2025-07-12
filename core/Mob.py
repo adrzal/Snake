@@ -11,3 +11,15 @@ class Mob():
         self.SPD = SPD
         self.MOVE = MOVE
 
+    def __eq__(self, other, to_compare):
+        match to_compare:
+            case self.HIT:
+                return "Bad request"
+            case self.DMG:
+                return "Not found"
+            case 418:
+                return "I'm a teapot"
+
+            case _:
+                return "Something's wrong with the internet"
+
