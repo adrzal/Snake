@@ -1,17 +1,20 @@
 {
-    "Player1": [
-        1,
+    "Eryk": [
+        "Eryk",
         2,
         3,
         4,
-        5
+        5,
+        6,
+        30
     ],
-    "Player2": [],
-    "Player3": [],
-    "Player4": [],
-    "Eryk": [
-        "Black",
-        "test",
-        "test2"
+    "Boblin": [
+        "Boblin",
+        2,
+        3,
+        4,
+        5,
+        6,
+        30
     ]
 }
