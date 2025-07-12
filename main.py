@@ -7,7 +7,12 @@
 # TODO: Save file system > write / read
 # TODO: Console for input/output for now > logger
 # TODO: save file structure draft [player objects]
+# TODO: 1. goblin = Mob(1,2,3..) 2. goblin.createMob() 3. Turn.active[mob list] > append(x) 4. Turn iterate
+# TODO: on combat start: 1. add all mobs to set 2. roll SPD for all 3. sort set based on SPD of mob 4. each mob act
+# TODO: method to normalize/illiterate inputs for Save class
+from core.Mob import Mob
 from utils.Save import Save
 
-autor = Save()
-autor.write()
+player = Mob("Eryk", 2, 3, 4, 5, 6, 30)
+
+print(Save.enter(player))
