@@ -16,13 +16,15 @@ from core.Mob import Mob
 from core.Turn import Turn
 from utils.Save import Save
 
-player = Mob("Eryk", 14, 3, 4, 5, 6, 30)
-player2 = Mob("Saly", 20, 3, 4, 5, 6, 30)
-goblin = Mob("Boblin", 5, 3, 4, 5, 6, 30)
+mob0 = Mob("Eryk", 14, 3, 4, 5, 6, 30)
+mob1 = Mob("Suzy", 14, 3, 4, 5, 6, 30)
+mob2 = Mob("Boblin", 5, 3, 4, 5, 6, 30)
 
-Save.write(player, player2, goblin)
-Save.read(Save.get_save_dir())
+Save.write(mob0, mob1, mob2)
 
-#dice = Dice()
-#turn = Turn(dice)
+dice = Dice()
+
+turn0 = Turn(dice, Save.read(Save.get_dir()))
+turn1 = Turn(dice, Save.read(Save.get_dir()))
+turn2 = Turn(dice, Save.read(Save.get_dir()))
 

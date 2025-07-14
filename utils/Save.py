@@ -1,10 +1,6 @@
 import json
 from datetime import datetime
-
-# TODO: save file content / structure
-
-MAIN_SAVE_DIR = "C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\game_save\\save.json"
-MOBS_FILE_DIR = "C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\utils\\Mob_list.json"
+import Config
 
 class Save:
     now = datetime.now()
@@ -12,11 +8,11 @@ class Save:
 
     @staticmethod
     def get_mob_save_dir():
-        return MOBS_FILE_DIR
+        return Config.MOBS_FILE_DIR
 
     @staticmethod
-    def get_save_dir():
-        return MAIN_SAVE_DIR
+    def get_dir():
+        return Config.MAIN_SAVE_DIR
 
 
     @staticmethod
@@ -28,6 +24,7 @@ class Save:
             for stat in data.get(character):
                 print(f"{stat}: {data.get(character).get(stat)}", end=" ")
             print()
+            return data
 
 
     @staticmethod
@@ -38,7 +35,6 @@ class Save:
     @staticmethod
     def write(*args):
         for x in args:
-            # HIT; DMG; HP; AC; SPD; MOVE; [**state]; [**actions]
-            Save.text_data.update({f"{x.name}": {'HIT':x.HIT, 'DMG':x.DMG, 'HP':x.HP, 'AC':x.AC, 'SPD':x.SPD, 'MOVE':x.MOVE}}) # send
-        with open(MAIN_SAVE_DIR, 'w', encoding='utf-8') as f:
+            Save.text_data.update({f"{x.name}": {'HIT':x.HIT, 'DMG':x.DMG, 'HP':x.HP, 'AC':x.AC, 'SPD':x.SPD, 'MOVE':x.MOVE}})
+        with open(Config.MAIN_SAVE_DIR, 'w', encoding='utf-8') as f:
             json.dump(Save.text_data, f, ensure_ascii=False, indent=4)
