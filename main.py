@@ -10,39 +10,19 @@
 # TODO: 1. goblin = Mob(1,2,3..) 2. goblin.createMob() 3. Turn.active[mob list] > append(x) 4. Turn iterate
 # TODO: on combat start: 1. add all mobs to set 2. roll SPD for all 3. sort set based on SPD of mob 4. each mob act
 # TODO: method to normalize/illiterate inputs for Save class
+# TODO: Mob attributes enum legend/key
 from core.Dice import Dice
 from core.Mob import Mob
+from core.Turn import Turn
 from utils.Save import Save
 
-player = Mob("Eryk", 2, 3, 4, 5, 6, 30)
-player2 = Mob("Saly", 2, 3, 4, 5, 6, 30)
-goblin = Mob("Boblin", 2, 3, 4, 5, 6, 30)
+player = Mob("Eryk", 14, 3, 4, 5, 6, 30)
+player2 = Mob("Saly", 20, 3, 4, 5, 6, 30)
+goblin = Mob("Boblin", 5, 3, 4, 5, 6, 30)
 
-#Save.read("C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\utils\\Mob_list.json")
+Save.write(player, player2, goblin)
+Save.read(Save.get_save_dir())
 
-Save.mobs(Mob.Mobs_collection) # save to file
+#dice = Dice()
+#turn = Turn(dice)
 
-
-#print(f"coby: {len(Mob.Mobs_collection)}")
-#for x in Mob.Mobs_collection:
-    #print(f"spin: {x}")
-    #Save.write(x)
-
-dice = Dice()
-
-def roll_speed():
-    for x in Mob.Mobs_collection.keys():
-        num = dice.k20(1)
-        print(f"{x}: {num}")
-
-    print("--------------------------")
-
-    for x, y in Mob.Mobs_collection.items():
-        print(x, y)
-
-    print("--------------------------")
-
-    for x in Mob.Mobs_collection.values():
-        print(x)
-
-roll_speed()

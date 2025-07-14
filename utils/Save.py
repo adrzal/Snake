@@ -3,41 +3,32 @@ from datetime import datetime
 
 # TODO: save file content / structure
 
-MAIN_SAVE_DIR = "C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\game_save"
+MAIN_SAVE_DIR = "C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\game_save\\save.json"
 MOBS_FILE_DIR = "C:\\Users\\Admin\\PycharmProjects\\rpg0.1\\utils\\Mob_list.json"
 
 class Save:
     now = datetime.now()
-
-    #HIT; DMG; HP; AC; SPD; MOVE; [**state]; [**actions]
-    text_data = {
-            'Player1': [1, 2, 3, 4, 5],
-            'Player2': [],
-            'Player3': [],
-            'Player4': []
-        }
-
-    @staticmethod
-    def mobs(list):
-        for x in list:
-            with open(f"{MOBS_FILE_DIR}", 'w', encoding='utf-8') as f:
-                json.dump(list, f, ensure_ascii=False, indent=4)
-
+    text_data = {}
 
     @staticmethod
     def get_mob_save_dir():
         return MOBS_FILE_DIR
 
     @staticmethod
-    def enter(Mob):
-        return {Mob:[Mob.name, Mob.AC, Mob.HP, Mob.DMG, Mob.HIT, Mob.MOVE, Mob.SPD]}
+    def get_save_dir():
+        return MAIN_SAVE_DIR
 
 
     @staticmethod
     def read(path):
         with open(path, 'r') as file:
             data = json.load(file)
-        print(data)
+        for character in data:
+            print(f"{character}:", end=" ")
+            for stat in data.get(character):
+                print(f"{stat}: {data.get(character).get(stat)}", end=" ")
+            print()
+
 
     @staticmethod
     def gen_name():
@@ -45,14 +36,9 @@ class Save:
         return f"save{date_time}.json"
 
     @staticmethod
-    def write(Mob):
-        Save.text_data.update({f"{Mob.name}": "White"}) # send
-        name = Save.gen_name()
-        with open(f"{MAIN_SAVE_DIR}\\{name}", 'w', encoding='utf-8') as f:
-            json.dump(Save.text_data, f, ensure_ascii=False, indent=4)
-
-    @staticmethod
-    def upload_mob(Mob, place):
-        Save.text_data.update({f"{Mob.name}": ["Black", "test", "test2"]}) # send
-        with open(place, 'w', encoding='utf-8') as f:
+    def write(*args):
+        for x in args:
+            # HIT; DMG; HP; AC; SPD; MOVE; [**state]; [**actions]
+            Save.text_data.update({f"{x.name}": {'HIT':x.HIT, 'DMG':x.DMG, 'HP':x.HP, 'AC':x.AC, 'SPD':x.SPD, 'MOVE':x.MOVE}}) # send
+        with open(MAIN_SAVE_DIR, 'w', encoding='utf-8') as f:
             json.dump(Save.text_data, f, ensure_ascii=False, indent=4)
