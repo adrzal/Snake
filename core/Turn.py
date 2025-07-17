@@ -10,27 +10,31 @@ class Turn:
     order = {}
 
     def __init__(self, dice, mobs):
-        Turn.turn_order(dice, mobs)
         Turn.index += 1
+        Turn.turn_order(dice, mobs)
 
     @staticmethod
-    def rolling(Dice):
+    def rolling():
         return Dice.k20(1)
 
     @staticmethod
-    def action_sequance(dice, mobs):
-        print("----------------------------")
-        print(f"Turn: {Turn.index}", end=" ")
+    def action_sequence(dice, mobs):
+        print(f"Turn: {Turn.index}", end=" | ")
         for mob in mobs:
             rolled = dice.k20(1)
             Turn.order.update({mob: rolled})
 
+        for key, value in Turn.order.items():
+            #print(f"file: {key}, {value}")
+            pass
+
         order = sorted(Turn.order.items(), key=operator.itemgetter(1), reverse=True)
         print(f"sorted: {order}")
+        return order
 
     @staticmethod
     def turn_order(dice, mobs):
         while True:
-            Turn.action_sequance(dice, mobs)
+            Turn.action_sequence(dice, mobs)
 
             break
