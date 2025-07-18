@@ -11,6 +11,10 @@ class Save:
         return Config.MOBS_FILE_DIR
 
     @staticmethod
+    def get_fights_save_dir():
+        return Config.FIGHTS_FILE_DIR
+
+    @staticmethod
     def get_dir():
         return Config.MAIN_SAVE_DIR
 
@@ -18,13 +22,7 @@ class Save:
     @staticmethod
     def read(path):
         with open(path, 'r') as file:
-            data = json.load(file)
-        for character in data:
-            print(f"{character}:", end=" ")
-            for stat in data.get(character):
-                print(f"{stat}: {data.get(character).get(stat)}", end=" ")
-            print()
-            return data
+            return json.load(file)
 
 
     @staticmethod

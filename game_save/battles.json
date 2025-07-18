@@ -1,0 +1,9 @@
+{
+    "encounter_title1": {
+        "dragon skeleton wyrmling": 1,
+        "goblin": 2
+    },
+    "encounter_title2": {
+        "goblin": 10
+    }
+}

@@ -11,20 +11,26 @@ class Dice():
             result += random.randint(1, die)
         return result
 
-    def k4(self, quantity):
+    @staticmethod
+    def k4(quantity):
         return Dice.count(4, quantity)
 
-    def k6(self, quantity):
+    @staticmethod
+    def k6(quantity):
         return Dice.count(6, quantity)
 
-    def k8(self, quantity):
+    @staticmethod
+    def k8(quantity):
         return Dice.count(8, quantity)
 
-    def k10(self, quantity):
+    @staticmethod
+    def k10(quantity):
         return Dice.count(10, quantity)
 
-    def k12(self, quantity):
+    @staticmethod
+    def k12(quantity):
         return Dice.count(12, quantity)
 
-    def k20(self, quantity):
+    @staticmethod
+    def k20(quantity):
         return Dice.count(20, quantity)

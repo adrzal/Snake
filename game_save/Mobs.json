@@ -1,0 +1,46 @@
+{
+    "dragon skeleton wyrmling": {
+        "name": "dragon skeleton wyrmling",
+        "size": "medium",
+        "kind": "undead",
+        "alignment": "LE",
+        "armor class": 15,
+        "hit points": 45,
+        "speed": 30,
+        "stat": {
+            "STR": 14,
+            "DEX": 10,
+            "CON": 14,
+            "INT": 8,
+            "WIS": 10,
+            "CHA": 8
+        },
+        "sav. throws": ["DEX", "WIS"],
+        "skills": ["stealth"],
+        "senses": ["darkvision"],
+        "CR": 2,
+        "Additional": ["nimble escape"]
+    },
+    "goblin": {
+        "name": "goblin",
+        "size": "small",
+        "kind": "humanoid",
+        "alignment": "NE",
+        "armor class": 15,
+        "hit points": 7,
+        "speed": 30,
+        "stat": {
+            "STR": 8,
+            "DEX": 14,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 8,
+            "CHA": 8
+        },
+        "sav. throws": [],
+        "skills": ["stealth"],
+        "senses": ["darkvision"],
+        "CR": 0.25,
+        "Additional": ["nimble escape"]
+    }
+}
