@@ -1,5 +1,6 @@
 {
     "dragon skeleton wyrmling": {
+        "name": "dragon skeleton wyrmling",
         "size": "medium",
         "kind": "undead",
         "alignment": "LE",
@@ -21,6 +22,7 @@
         "Additional": ["nimble escape"]
     },
     "goblin": {
+        "name": "goblin",
         "size": "small",
         "kind": "humanoid",
         "alignment": "NE",

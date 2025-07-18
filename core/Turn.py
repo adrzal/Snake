@@ -1,40 +1,43 @@
-# new turn = new object + creator methods as triggers
-# 1. read file for Mobs 2. put Mob in [] 3. roll SPD for each
-import operator
-
-from core.Dice import Dice
+from core.units.Mob import Mob
+from core.units.Player import Player
+from utils.Save import Save
 
 
 class Turn:
     index = 0
-    order = {}
+    order = []
+    in_progress = True
 
-    def __init__(self, dice, mobs):
+    def __init__(self):
         Turn.index += 1
-        Turn.turn_order(dice, mobs)
+        self.new_round()
 
     @staticmethod
-    def rolling():
-        return Dice.k20(1)
+    def start():
+        encounter = Save.read(Save.get_fights_save_dir()).get('encounter_title1')   # read mobs
+        mobs_dics = Save.read(Save.get_mob_save_dir())                              # read mobs stats / mapping
 
-    @staticmethod
-    def action_sequence(dice, mobs):
-        print(f"Turn: {Turn.index}", end=" | ")
-        for mob in mobs:
-            rolled = dice.k20(1)
-            Turn.order.update({mob: rolled})
+        for key in encounter.keys():
+            for x in range(encounter.get(key)):
+                mob = Mob(mobs_dics.get(key))
+                Turn.order.append(mob)
 
-        for key, value in Turn.order.items():
-            #print(f"file: {key}, {value}")
-            pass
+        players = Save.read(Save.get_dir())
 
-        order = sorted(Turn.order.items(), key=operator.itemgetter(1), reverse=True)
-        print(f"sorted: {order}")
-        return order
+        for key, value in players.items():
+            player = Player(players.get(key))
+            Turn.order.append(player)
 
-    @staticmethod
-    def turn_order(dice, mobs):
-        while True:
-            Turn.action_sequence(dice, mobs)
+        @staticmethod
+        def sort_array(unit):
+            return unit.initiative
 
-            break
+        Turn.order.sort(key=sort_array, reverse=True)
+
+    def new_round(self):
+        for x in Turn.order:
+            print(f"{x.name} spd:{x.initiative} HP:{x.HP}, is_alive: {x.is_alive}")
+        choose = input().lower()
+
+        if choose == 'k':
+            Turn.in_progress = False
