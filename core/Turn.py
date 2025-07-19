@@ -20,12 +20,14 @@ class Turn:
         for key in encounter.keys():
             for x in range(encounter.get(key)):
                 mob = Mob(mobs_dics.get(key))
+                mob.name = key
                 Turn.order.append(mob)
 
         players = Save.read(Save.get_dir())
 
         for key, value in players.items():
             player = Player(players.get(key))
+            player.name = key
             Turn.order.append(player)
 
         @staticmethod
@@ -36,7 +38,7 @@ class Turn:
 
     def new_round(self):
         for x in Turn.order:
-            print(f"{x.name} spd:{x.initiative} HP:{x.HP}, is_alive: {x.is_alive}")
+            print(f"{x} spd:{x.initiative} HP:{x.HP}, is_alive: {x.is_alive}")
         choose = input().lower()
 
         if choose == 'k':
