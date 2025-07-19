@@ -10,7 +10,7 @@ class Unit():
 
     def __init__(self, collection):
         stats = collection.get('stat')
-        self.name = collection.get('name')
+        self.name = ""
         self.HP = collection.get('hit points')
         self.STR = stats.get('STR')
         self.DEX = stats.get('DEX')
@@ -23,6 +23,9 @@ class Unit():
 
     def roll_sum(self, stat):
         return Dice.k20(1) + self.bonus(stat)
+
+    def __str__(self):
+        return self.name
 
     def bonus(self, stat):
         match True:
